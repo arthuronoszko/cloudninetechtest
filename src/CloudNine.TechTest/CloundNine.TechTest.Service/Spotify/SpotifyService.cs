@@ -1,5 +1,6 @@
 ﻿using CloudNine.TechTest.Service.Oauth;
 using CloudNine.TechTest.Service.Spotify.Response;
+using CloundNine.TechTest.Service.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -7,24 +8,21 @@ using System.Threading.Tasks;
 using System.Web;
 
 namespace CloudNine.TechTest.Service.Spotify {
-    public class SpotifyService {
+    public class SpotifyService : ISpotifyService {
 
         private HttpClient _httpClient;
-        private readonly string _spotifyApiBaseAddress = "https://api.spotify.com/";
-        private readonly string _spotifyAuthenticationEndpoint = "https://accounts.spotify.com/api/token";
-        private readonly string _spotifyClientId = "eff46989a68d4235a5dd72bdc40fd439";
-        private readonly string _spotifyClientSecret = "b95fb3814a1c4f2f8958573ec57d6555";
 
-        public SpotifyService() {
+        public SpotifyService(ISpotifyServiceConfiguration configuration) {
+
             var oauthMessageHandler = new OauthMessageHandler(
-                authenticationEndpoint: _spotifyAuthenticationEndpoint,
-                clientId: _spotifyClientId,
-                clientSecret: _spotifyClientSecret,
+                authenticationEndpoint: configuration.SpotifyAuthenticationEndpoint,
+                clientId: configuration.SpotifyClientID,
+                clientSecret: configuration.SpotifyClientSecret,
                 baseMessageHandler: new HttpClientHandler()
                 );
 
             _httpClient = new HttpClient(oauthMessageHandler) {
-                BaseAddress = new Uri(_spotifyApiBaseAddress),
+                BaseAddress = new Uri(configuration.SpotifyBaseURL),
             };
         }
 

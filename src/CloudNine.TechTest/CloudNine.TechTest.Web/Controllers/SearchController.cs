@@ -8,6 +8,11 @@ using System.Web.Mvc;
 namespace CloudNine.TechTest.Web.Controllers {
     public class SearchController : Controller
     {
+        private readonly ISpotifyService _spotifyService;
+
+        public SearchController(ISpotifyService spotifyService) {
+            _spotifyService = spotifyService;
+        }
         // GET: Search
         public ActionResult Index()
         {
@@ -16,12 +21,8 @@ namespace CloudNine.TechTest.Web.Controllers {
 
         [HttpPost]
         public async Task<ActionResult> Search(SearchViewModel model) {
-            
-            var spotifyService = new SpotifyService();
-            var tracksResponse = await spotifyService.SearchGenreAsync(model.GenreSearchString);
-
+            var tracksResponse = await _spotifyService.SearchGenreAsync(model.GenreSearchString);
             var tracks = tracksResponse.Tracks.Items.Select(x => x.ToListViewModel());
-
             var resultsViewModel = new SearchResultsViewModel(genreSearchString: model.GenreSearchString, tracks: tracks );
             return PartialView("SearchResults", resultsViewModel);
         }
