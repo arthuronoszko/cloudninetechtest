@@ -1,5 +1,5 @@
-﻿using CloudNine.TechTest.Web.Models;
-using CloudNine.TechTest.Web.Service;
+﻿using CloudNine.TechTest.Service;
+using CloudNine.TechTest.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

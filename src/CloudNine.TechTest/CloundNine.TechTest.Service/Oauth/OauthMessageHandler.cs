@@ -9,13 +9,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
 
-namespace CloudNine.TechTest.Web.Service {
-    public class OauthMessageHandler : DelegatingHandler {
+namespace CloudNine.TechTest.Service {
+    internal class OauthMessageHandler : DelegatingHandler {
         private readonly string _authenticationEndpoint;
         private readonly string _clientId;
         private readonly string _clientSecret;
 
-        public OauthMessageHandler(string authenticationEndpoint, string clientId, string clientSecret, HttpMessageHandler baseMessageHandler) : base(baseMessageHandler) {
+        internal OauthMessageHandler(string authenticationEndpoint, string clientId, string clientSecret, HttpMessageHandler baseMessageHandler) : base(baseMessageHandler) {
             _authenticationEndpoint = authenticationEndpoint;
             _clientId = clientId;
             _clientSecret = clientSecret;
