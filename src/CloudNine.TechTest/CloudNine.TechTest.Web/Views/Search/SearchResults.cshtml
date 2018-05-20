@@ -2,4 +2,10 @@
 
 <div>
     Resultat för <strong> @Model.GenreSearchString</strong>:
+
+    <ul>
+        @foreach(var track in Model.TrackNames) {
+            { <li>@track</li>}
+        }
+    </ul>
 </div>
