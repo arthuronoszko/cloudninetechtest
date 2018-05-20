@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using CloudNine.TechTest.Service.Oauth;
+using CloudNine.TechTest.Service.Spotify.Response;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace CloudNine.TechTest.Service {
+namespace CloudNine.TechTest.Service.Spotify {
     public class SpotifyService {
 
         private HttpClient _httpClient;
@@ -15,7 +16,6 @@ namespace CloudNine.TechTest.Service {
         private readonly string _spotifyClientSecret = "b95fb3814a1c4f2f8958573ec57d6555";
 
         public SpotifyService() {
-
             var oauthMessageHandler = new OauthMessageHandler(
                 authenticationEndpoint: _spotifyAuthenticationEndpoint,
                 clientId: _spotifyClientId,
@@ -41,24 +41,5 @@ namespace CloudNine.TechTest.Service {
             return tracksResponse;
         }
 
-    }
-
-    public class SpotifyTracksResponseModel {
-        [JsonProperty("tracks")]
-        public SpotifyTrackCollectionResponseModel Tracks { get; set; }
-    }
-
-    public class SpotifyTrackCollectionResponseModel {
-        [JsonProperty("items")]
-        public IEnumerable<SpotifyTrackResponseModel> Items { get; set;}
-    }
-    public class SpotifyTrackResponseModel {
-
-        [JsonProperty("href")]
-        public string Link { get; set; }
-        [JsonProperty("id")]
-        public string Id { get; set; }
-        [JsonProperty("name")]
-        public string Name { get; set; }
     }
 }

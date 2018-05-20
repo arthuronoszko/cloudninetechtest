@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
 
-namespace CloudNine.TechTest.Service {
+namespace CloudNine.TechTest.Service.Oauth {
     internal class OauthMessageHandler : DelegatingHandler {
         private readonly string _authenticationEndpoint;
         private readonly string _clientId;
