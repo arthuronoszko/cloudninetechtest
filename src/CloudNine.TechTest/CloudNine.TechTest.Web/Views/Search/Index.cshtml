@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model CloudNine.TechTest.Web.Models.SearchViewModel
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -8,13 +10,25 @@
 <body>
     <div>
         SEARCH HERE FOR MUSIC RECOMMENDATIONS
-        <p>
-            @Ajax.ActionLink("Load search results", "Search", new AjaxOptions() { UpdateTargetId = "searchResults", InsertionMode = InsertionMode.Replace })
-        </p>
-    </div>
-    <div id="searchResults">
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-</body>
+        
+            @using (Ajax.BeginForm("Search", "Search", new AjaxOptions() {
+                UpdateTargetId = "searchResults"
+            })) {
+                <p>
+                    <label>Vilken genre är du sugen på nu?</label>
+                    @Html.TextBoxFor(x => x.GenreSearchString)
+                </p>
+                <p>
+                    <button>Search for recommendations</button>
+                    @*<input type="submit" value="Search for recommendations" />*@
+                </p>
+            }
+        
+
+        </div>
+        <div id="searchResults">
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+    </body>
 </html>
 

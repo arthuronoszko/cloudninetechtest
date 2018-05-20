@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using CloudNine.TechTest.Web.Models;
+using System.Web.Mvc;
 
 namespace CloudNine.TechTest.Web.Controllers {
     public class SearchController : Controller
@@ -6,11 +7,16 @@ namespace CloudNine.TechTest.Web.Controllers {
         // GET: Search
         public ActionResult Index()
         {
-            return View();
+            return View(new SearchViewModel());
         }
 
-        public ActionResult Search() {
-            return PartialView("SearchResults");
+        [HttpPost]
+        public ActionResult Search(SearchViewModel model) {
+
+            var resultsViewModel = new SearchResultsViewModel();
+            resultsViewModel.GenreSearchString = model.GenreSearchString;
+
+            return PartialView("SearchResults", resultsViewModel);
         }
     }
 }
