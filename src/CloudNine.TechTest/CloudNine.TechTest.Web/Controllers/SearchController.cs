@@ -1,21 +1,18 @@
 ﻿using CloudNine.TechTest.Service.Spotify;
-using CloudNine.TechTest.Web.Models;
-using System.Collections.Generic;
+using CloudNine.TechTest.Web.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace CloudNine.TechTest.Web.Controllers {
-    public class SearchController : Controller
-    {
+    public class SearchController : Controller {
         private readonly ISpotifyService _spotifyService;
 
         public SearchController(ISpotifyService spotifyService) {
             _spotifyService = spotifyService;
         }
-        // GET: Search
-        public ActionResult Index()
-        {
+        
+        public ActionResult Index() {
             return View(new SearchViewModel());
         }
 
@@ -23,7 +20,7 @@ namespace CloudNine.TechTest.Web.Controllers {
         public async Task<ActionResult> Search(SearchViewModel model) {
             var tracksResponse = await _spotifyService.SearchGenreAsync(model.GenreSearchString);
             var tracks = tracksResponse.Tracks.Items.Select(x => x.ToListViewModel());
-            var resultsViewModel = new SearchResultsViewModel(genreSearchString: model.GenreSearchString, tracks: tracks );
+            var resultsViewModel = new SearchResultsViewModel(genreSearchString: model.GenreSearchString, tracks: tracks);
             return PartialView("SearchResults", resultsViewModel);
         }
     }

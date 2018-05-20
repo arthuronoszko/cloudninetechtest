@@ -1,7 +1,7 @@
 ﻿using CloudNine.TechTest.Service.Spotify.Response;
 using System.Linq;
 
-namespace CloudNine.TechTest.Web.Models {
+namespace CloudNine.TechTest.Web.ViewModels {
     public class TrackListViewModel {
         public string Name { get; set; }
         public string ListeningLink { get; set; }
