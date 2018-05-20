@@ -4,8 +4,13 @@
     Resultat för <strong> @Model.GenreSearchString</strong>:
 
     <ul>
-        @foreach(var track in Model.TrackNames) {
-            { <li>@track</li>}
+        @foreach (var track in Model.Tracks) {
+            {
+                <li>
+                    <p> <a href="@track.ListeningLink"> @track.Name </a> </p>
+                    <p> @track.Artists </p>
+                </li>
+            }
         }
     </ul>
 </div>

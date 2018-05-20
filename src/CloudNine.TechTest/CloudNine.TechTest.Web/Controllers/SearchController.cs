@@ -16,12 +16,13 @@ namespace CloudNine.TechTest.Web.Controllers {
 
         [HttpPost]
         public async Task<ActionResult> Search(SearchViewModel model) {
-            var trackNames = new List<string>();
+            
             var spotifyService = new SpotifyService();
             var tracksResponse = await spotifyService.SearchGenreAsync(model.GenreSearchString);
-            trackNames = tracksResponse.Tracks.Items.Select(x => x.Name).ToList();
 
-            var resultsViewModel = new SearchResultsViewModel(genreSearchString: model.GenreSearchString, trackNames: trackNames);
+            var tracks = tracksResponse.Tracks.Items.Select(x => x.ToListViewModel());
+
+            var resultsViewModel = new SearchResultsViewModel(genreSearchString: model.GenreSearchString, tracks: tracks );
             return PartialView("SearchResults", resultsViewModel);
         }
     }

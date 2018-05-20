@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Oauth\OauthMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spotify\Response\SpotifyTrackArtistResponseModel.cs" />
     <Compile Include="Spotify\SpotifyService.cs" />
     <Compile Include="Spotify\Response\SpotifyTrackCollectionResponseModel.cs" />
     <Compile Include="Spotify\Response\SpotifyTrackResponseModel.cs" />

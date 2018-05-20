@@ -31,7 +31,7 @@ namespace CloudNine.TechTest.Service.Spotify {
         public async Task<SpotifyTracksResponseModel> SearchGenreAsync(string genreName) {
 
             var query = HttpUtility.ParseQueryString(string.Empty);
-            query["q"] = genreName;
+            query["q"] = $"genre:{genreName}";
             query["type"] = "track";
 
             var path = $"v1/search?{query.ToString()}";
@@ -40,6 +40,5 @@ namespace CloudNine.TechTest.Service.Spotify {
             var tracksResponse = JsonConvert.DeserializeObject<SpotifyTracksResponseModel>(result);
             return tracksResponse;
         }
-
     }
 }
