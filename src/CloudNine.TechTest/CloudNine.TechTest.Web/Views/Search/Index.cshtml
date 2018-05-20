@@ -1,9 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -11,8 +6,15 @@
     <title>Index</title>
 </head>
 <body>
-    <div> 
+    <div>
         SEARCH HERE FOR MUSIC RECOMMENDATIONS
+        <p>
+            @Ajax.ActionLink("Load search results", "Search", new AjaxOptions() { UpdateTargetId = "searchResults", InsertionMode = InsertionMode.Replace })
+        </p>
     </div>
+    <div id="searchResults">
+    </div>
+    @Scripts.Render("~/bundles/jquery")
 </body>
 </html>
+

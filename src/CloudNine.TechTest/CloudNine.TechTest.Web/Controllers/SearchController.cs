@@ -8,5 +8,9 @@ namespace CloudNine.TechTest.Web.Controllers {
         {
             return View();
         }
+
+        public ActionResult Search() {
+            return PartialView("SearchResults");
+        }
     }
 }
