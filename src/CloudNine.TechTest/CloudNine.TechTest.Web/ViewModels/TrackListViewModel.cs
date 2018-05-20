@@ -1,4 +1,4 @@
-﻿using CloudNine.TechTest.Service.Spotify.Response;
+﻿using CloudNine.TechTest.Service.Spotify.Api.Response;
 using System.Linq;
 
 namespace CloudNine.TechTest.Web.ViewModels {

@@ -49,12 +49,14 @@
     <Compile Include="Configuration\ServiceConfiguration.cs" />
     <Compile Include="Oauth\OauthMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spotify\API\ISpotifyAPI.cs" />
     <Compile Include="Spotify\ISpotifyService.cs" />
-    <Compile Include="Spotify\Response\SpotifyTrackArtistResponseModel.cs" />
+    <Compile Include="Spotify\API\Response\SpotifyTrackArtistResponseModel.cs" />
+    <Compile Include="Spotify\API\SpotifyAPI.cs" />
     <Compile Include="Spotify\SpotifyService.cs" />
-    <Compile Include="Spotify\Response\SpotifyTrackCollectionResponseModel.cs" />
-    <Compile Include="Spotify\Response\SpotifyTrackResponseModel.cs" />
-    <Compile Include="Spotify\Response\SpotifyTracksResponseModel.cs" />
+    <Compile Include="Spotify\API\Response\SpotifyTrackCollectionResponseModel.cs" />
+    <Compile Include="Spotify\API\Response\SpotifyTrackResponseModel.cs" />
+    <Compile Include="Spotify\API\Response\SpotifyTracksResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

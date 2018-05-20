@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace CloudNine.TechTest.Service.Spotify.Response {
+namespace CloudNine.TechTest.Service.Spotify.Api.Response {
     public class SpotifyTrackResponseModel {
 
         [JsonProperty("href")]
