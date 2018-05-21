@@ -2,11 +2,9 @@
 
 namespace CloudNine.TechTest.Web.ViewModels {
     public class SearchResultsViewModel {
-        public string GenreSearchString;
         public IEnumerable<TrackListViewModel> Tracks;
 
-        public SearchResultsViewModel(string genreSearchString, IEnumerable<TrackListViewModel> tracks) {
-            GenreSearchString = genreSearchString;
+        public SearchResultsViewModel(IEnumerable<TrackListViewModel> tracks) {
             Tracks = tracks ?? new List<TrackListViewModel>();
         }
     }

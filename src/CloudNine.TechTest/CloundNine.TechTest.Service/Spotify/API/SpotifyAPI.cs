@@ -28,6 +28,7 @@ namespace CloudNine.TechTest.Service.Spotify.Api {
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["q"] = $"genre:{genreName}";
             query["type"] = "track";
+            query["limit"] = "50";
 
             var path = $"v1/search?{query.ToString()}";
 

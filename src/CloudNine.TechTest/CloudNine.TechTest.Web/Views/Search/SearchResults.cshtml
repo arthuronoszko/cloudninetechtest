@@ -1,17 +1,32 @@
 ﻿@model CloudNine.TechTest.Web.ViewModels.SearchResultsViewModel
 
 <div>
-    Resultat för <strong> @Model.GenreSearchString</strong>:
-
-    <ul>
-        @foreach (var track in Model.Tracks) {
-            {
-                <li>
-                    <p> <a href="@track.ListeningLink"> @track.Name </a> </p>
-                    <p> @track.Artists </p>
-                    <p> @track.DanceabilityScore </p>
-                </li>
+    <table id="searchResultsTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Låt</th>
+                <th>Artister</th>
+                <th>Spotifylänk</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var track in Model.Tracks) {
+            <tr>
+                <td>@track.Name</td>
+                <td>@track.Artists</td>
+                <td><a href="@track.ListeningLink">Lyssna</a></td>
+            </tr>
             }
-        }
-    </ul>
+        </tbody>
+    </table>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#searchResultsTable').DataTable({
+            paging: false,
+            searching: false,
+            info: false
+        });
+    });
+</script>

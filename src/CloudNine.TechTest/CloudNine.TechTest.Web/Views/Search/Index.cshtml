@@ -6,28 +6,30 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <div>
-        SEARCH HERE FOR MUSIC RECOMMENDATIONS
-        
-            @using (Ajax.BeginForm("Search", "Search", new AjaxOptions() {
-                UpdateTargetId = "searchResults"
-            })) {
-                <p>
-                    <label>Vilken genre är du sugen på nu?</label>
-                    @Html.TextBoxFor(x => x.GenreSearchString)
-                </p>
-                <p>
-                    <button>Search for recommendations</button>
-                </p>
-            }
-        
-
+    <div class="container text-center">
+        <h1>Hitta musiktips</h1>
+        @using (Ajax.BeginForm("Search", "Search", new AjaxOptions() {
+            UpdateTargetId = "searchResults"
+        })) {
+        <div>
+            <label>Vilken genre är du sugen på?</label>
+            @Html.EnumDropDownListFor(x => x.Genre)
         </div>
-        <div id="searchResults">
+        <div>
+            <label>Hur danssugen är du?</label>
+            @Html.EnumDropDownListFor(x => x.Danceability)
         </div>
-        @Scripts.Render("~/bundles/jquery")
-    </body>
+                <button>Hitta!</button>
+        }
+    </div>
+    <div id="searchResults">
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+</body>
 </html>
 
