@@ -10,24 +10,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container text-center">
+    <div class="container">
         <h1>Hitta musiktips</h1>
         @using (Ajax.BeginForm("Search", "Search", new AjaxOptions() {
             UpdateTargetId = "searchResults"
         })) {
-        <div>
-            <label>Vilken genre är du sugen på?</label>
-            @Html.EnumDropDownListFor(x => x.Genre)
-        </div>
-        <div>
-            <label>Hur danssugen är du?</label>
-            @Html.EnumDropDownListFor(x => x.Danceability)
-        </div>
-                <button>Hitta!</button>
+            <div class="form-group">
+                <label for="genreSelect">Vilken genre är du sugen på?</label>
+                @Html.EnumDropDownListFor(x => x.Genre, new { @class = "form-control", @id = "genreSelect" })
+            </div>
+            <div class="form-group">
+                <label for="danceabilitySelect">Hur danssugen är du?</label>
+                @Html.EnumDropDownListFor(x => x.Danceability, new { @class = "form-control", @id = "danceabilitySelect" })
+            </div>
+            <button type="submit" class="btn bton-default">Hitta!</button>
         }
+        <div id="searchResults">
+        </div>
     </div>
-    <div id="searchResults">
-    </div>
+    
     @Scripts.Render("~/bundles/jquery")
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 </body>

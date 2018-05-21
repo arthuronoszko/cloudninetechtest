@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace CloudNine.TechTest.Service.Spotify.Api.Response {
     public class SpotifyTrackResponseModel {
-
         [JsonProperty("href")]
         public string Link { get; set; }
         [JsonProperty("id")]
