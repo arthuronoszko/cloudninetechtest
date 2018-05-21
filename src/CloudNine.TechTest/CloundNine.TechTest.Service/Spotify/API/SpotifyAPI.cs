@@ -3,6 +3,7 @@ using CloudNine.TechTest.Service.Spotify.Api.Response;
 using CloundNine.TechTest.Service.Configuration;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -33,6 +34,17 @@ namespace CloudNine.TechTest.Service.Spotify.Api {
             var result = await _httpClient.GetStringAsync(path);
             var tracksResponse = JsonConvert.DeserializeObject<SpotifyTracksResponseModel>(result);
             return tracksResponse;
+        }
+
+        public async Task<SpotifyTrackAudioFeaturesResponseCollectionResponseModel> GetAudioFeaturesAsync(IEnumerable<string> trackIds) {
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["ids"] = string.Join(",", trackIds);
+
+            var path = $"v1/audio-features?{query.ToString()}";
+
+            var result = await _httpClient.GetStringAsync(path);
+            var audioFeaturesResponse = JsonConvert.DeserializeObject<SpotifyTrackAudioFeaturesResponseCollectionResponseModel>(result);
+            return audioFeaturesResponse;
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
-using CloudNine.TechTest.Service.Spotify.Api.Response;
+﻿using CloudNine.TechTest.Service.Spotify.Model;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CloudNine.TechTest.Service.Spotify {
     public interface ISpotifyService {
-        Task<SpotifyTracksResponseModel> SearchGenreAsync(string genreName);
+        Task<IEnumerable<SpotifyTrack>> SearchTracksAsync(string genreName);
     }
 }

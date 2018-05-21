@@ -1,4 +1,4 @@
-﻿@model CloudNine.TechTest.Web.Models.SearchResultsViewModel
+﻿@model CloudNine.TechTest.Web.ViewModels.SearchResultsViewModel
 
 <div>
     Resultat för <strong> @Model.GenreSearchString</strong>:
@@ -9,6 +9,7 @@
                 <li>
                     <p> <a href="@track.ListeningLink"> @track.Name </a> </p>
                     <p> @track.Artists </p>
+                    <p> @track.DanceabilityScore </p>
                 </li>
             }
         }
