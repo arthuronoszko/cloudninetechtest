@@ -18,7 +18,7 @@ namespace CloudNine.TechTest.Web.Controllers {
 
         [HttpPost]
         public async Task<ActionResult> Search(SearchViewModel model) {
-            var genreSearchName = SearchName(model.Genre);
+            var genreSearchName = GetGenreSearchName(model.Genre);
             var tracksResponse = await _spotifyService.SearchTracksAsync(genreSearchName);
 
             var tracks = tracksResponse.Select(x => x.ToListViewModel()).Where(x => x.DanceabilityScore == model.Danceability);
@@ -26,7 +26,7 @@ namespace CloudNine.TechTest.Web.Controllers {
             return PartialView("SearchResults", resultsViewModel);
         }
 
-        private string SearchName(Genre genre) {
+        private string GetGenreSearchName(Genre genre) {
             switch (genre) {
                 case Genre.Classical: return "classical";
                 case Genre.Electronic: return "electronic";

@@ -13,6 +13,5 @@ namespace CloudNine.TechTest.Service.Spotify.Api.Response {
         public string Uri { get; set; }
         [JsonProperty("artists")]
         public IEnumerable<SpotifyTrackArtistResponseModel> Artists { get; set; }
-
     }
 }
