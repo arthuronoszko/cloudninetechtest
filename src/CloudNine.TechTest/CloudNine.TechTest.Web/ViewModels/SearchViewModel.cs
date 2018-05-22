@@ -14,6 +14,12 @@ namespace CloudNine.TechTest.Web.ViewModels {
         [Display(Name = "Klassiskt")]
         Classical,
         [Display(Name = "Elektroniskt")]
-        Electronic
+        Electronic,
+        [Display(Name = "Disco")]
+        Disco,
+        [Display(Name = "Pop")]
+        Pop,
+        [Display(Name = "Dance")]
+        Dance
     }
 }

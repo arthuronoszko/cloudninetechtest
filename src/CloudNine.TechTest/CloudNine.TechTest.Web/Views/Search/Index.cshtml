@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-4 mb-5">
         <h1>Hitta musiktips</h1>
         @using (Ajax.BeginForm("Search", "Search", new AjaxOptions() {
             UpdateTargetId = "searchResults"
@@ -23,7 +23,7 @@
                 <label for="danceabilitySelect">Hur danssugen är du?</label>
                 @Html.EnumDropDownListFor(x => x.Danceability, new { @class = "form-control", @id = "danceabilitySelect" })
             </div>
-            <button type="submit" class="btn bton-default">Hitta!</button>
+            <button type="submit" class="btn btn-success mt-2 mb-4">Hitta!</button>
         }
         <div id="searchResults">
         </div>

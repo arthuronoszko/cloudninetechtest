@@ -5,8 +5,8 @@
         <thead>
             <tr>
                 <th>Låt</th>
-                <th>Artister</th>
-                <th>Spotifylänk</th>
+                <th>Artist</th>
+                <th>Lyssna</th>
             </tr>
         </thead>
         <tbody>
@@ -14,7 +14,7 @@
             <tr>
                 <td>@track.Name</td>
                 <td>@track.Artists</td>
-                <td><a href="@track.ListeningLink">Lyssna</a></td>
+                <td><a href="@track.ListeningLink" class="text-success"><img src="~/Content/Spotify_Icon_RGB_Green.png" style="width: 35px; height: 35px;"/></a></td>
             </tr>
             }
         </tbody>
@@ -29,7 +29,10 @@
             info: false,
             columnDefs: [
                 { "orderable": false, "targets": 2 }
-            ]
+            ],
+            language: {
+                "emptyTable": "Hittade tyvärr inga låtar, prova att söka med något annat"
+            }
         });
     });
 </script>

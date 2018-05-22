@@ -30,8 +30,11 @@ namespace CloudNine.TechTest.Web.Controllers {
             switch (genre) {
                 case Genre.Classical: return "classical";
                 case Genre.Electronic: return "electronic";
-                case Genre.HipHop: return "hiphop";
+                case Genre.HipHop: return "hip-hop";
                 case Genre.Rock: return "rock";
+                case Genre.Disco: return "disco";
+                case Genre.Pop: return "pop";
+                case Genre.Dance: return "dance";
                 default: return "";
             }
         }

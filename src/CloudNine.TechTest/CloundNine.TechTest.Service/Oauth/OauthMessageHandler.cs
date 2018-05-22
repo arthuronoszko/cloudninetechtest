@@ -5,9 +5,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.Caching;
 using System.Security.Authentication;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text;
 
 namespace CloudNine.TechTest.Service.Oauth {
     class OauthMessageHandler : DelegatingHandler {
@@ -25,6 +25,7 @@ namespace CloudNine.TechTest.Service.Oauth {
             if (request.Headers.Authorization == null) {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await GetAuthenticationTokenAsync());
             }
+
             return await base.SendAsync(request, cancellationToken);
         }
 
@@ -36,8 +37,10 @@ namespace CloudNine.TechTest.Service.Oauth {
                 var now = DateTime.Now;
                 var response = await GetAuthenticationTokenResponseAsync();
                 token = response?.AccessToken;
-                if (token == null)
+
+                if (token == null) {
                     throw new AuthenticationException("Authentication failed");
+                }
 
                 var expireTime = now.AddSeconds(response.ExpiresIn);
                 MemoryCache.Default.Set(cacheKey, token, new DateTimeOffset(expireTime));
