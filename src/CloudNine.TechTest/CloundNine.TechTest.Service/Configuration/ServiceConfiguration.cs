@@ -1,8 +1,10 @@
-﻿namespace CloundNine.TechTest.Service.Configuration {
+﻿using System.Configuration;
+
+namespace CloundNine.TechTest.Service.Configuration {
     public class ServiceConfiguration : ISpotifyServiceConfiguration {
-        public string SpotifyBaseURL => "https://api.spotify.com/";
-        public string SpotifyClientID => "996d0037680544c987287a9b0470fdbb";
-        public string SpotifyClientSecret => "5a3c92099a324b8f9e45d77e919fec13";
-        public string SpotifyAuthenticationEndpoint => "https://accounts.spotify.com/api/token";
+        public string SpotifyBaseURL => ConfigurationManager.AppSettings["SpotifyBaseURL"];
+        public string SpotifyClientID => ConfigurationManager.AppSettings["SpotifyClientID"];
+        public string SpotifyClientSecret => ConfigurationManager.AppSettings["SpotifyClientSecret"];
+        public string SpotifyAuthenticationEndpoint => ConfigurationManager.AppSettings["SpotifyAuthenticationEndpoint"];
     }
 }
